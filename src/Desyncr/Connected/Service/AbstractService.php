@@ -1,6 +1,6 @@
 <?php
 namespace Desyncr\Connected\Service;
-use \Desyncr\Connected\Frame\AbstractFrame;
+use \Desyncr\Connected\Frame\BaseFrame;
 
 abstract class AbstractService implements ServiceInterface {
     protected $frames = array();
@@ -14,7 +14,7 @@ abstract class AbstractService implements ServiceInterface {
     public function add($key, $frame) {
 
         if (!is_object($frame)) {
-            $frame = new AbstractFrame($frame);
+            $frame = new BaseFrame($frame);
         }
         $frame->setId($key);
 
