@@ -13,4 +13,15 @@ class AbstractServiceFactory implements FactoryInterface {
         return $this->config;
 
     }
+
+    public function getConfig($data = null) {
+        $configuration = $this->config[$this->configuration_key] ? $this->config[$this->configuration_key] : array();
+        if ($data && isset($configuration[$data])) {
+            return $configuration[$data];
+        } else {
+            return array();
+        }
+
+        return $configuration;
+    }
 }
