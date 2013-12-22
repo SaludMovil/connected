@@ -3,7 +3,7 @@
 **master:** [![Build Status master](https://api.travis-ci.org/desyncr/connected.png?branch=master)](http://travis-ci.org/desyncr/connected) |
 **development:** [![Build Status development](https://api.travis-ci.org/desyncr/connected.png?branch=development)](http://travis-ci.org/desyncr/connected)
 
-Zend2 module for Realtime and persistent notifications. Currently supporting [ZeroMQ][4] and Doctrine.
+Zend2 module for realtime and persistent communications/notifications. Currently supporting [ZeroMQ][4] and Doctrine.
 
 ## Installation
 
