@@ -3,7 +3,7 @@ namespace Desyncr\Connected\Factory;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class AbstractServiceFactory implements FactoryInterface {
+abstract class AbstractServiceFactory implements FactoryInterface {
     protected $config = array();
 
     public function createService(ServiceLocatorInterface $serviceLocator) {
