@@ -11,17 +11,27 @@ abstract class AbstractService implements ServiceInterface {
         }
     }
 
+    public function getOption($option) {
+        if (isset($this->$option)) {
+            return $this->$option;
+        }
+    }
+
+
     public function add($key, $frame) {
 
         if (!is_object($frame)) {
             $frame = new BaseFrame($frame);
         }
-        $frame->setId($key);
 
         if (!$frame instanceOf \Desyncr\Connected\Frame\FrameInterface) {
             throw new \Exception('Frame must implement FrameInterface');
         }
 
+        $frame->setId($key);
+
         $this->frames[] = $frame;
+
+        return $frame;
     }
 }
