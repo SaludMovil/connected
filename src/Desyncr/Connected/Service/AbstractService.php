@@ -11,7 +11,7 @@ abstract class AbstractService implements ServiceInterface {
         }
     }
 
-    public function add($key, $frame) {
+    public function add($key, $frame, $target) {
 
         if (!is_object($frame)) {
             $frame = new BaseFrame($frame);
@@ -22,6 +22,7 @@ abstract class AbstractService implements ServiceInterface {
             throw new \Exception('Frame must implement FrameInterface');
         }
 
+        $frame->set('targets', $target);
         $this->frames[] = $frame;
     }
 }
