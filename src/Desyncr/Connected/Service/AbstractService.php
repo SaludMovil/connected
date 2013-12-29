@@ -18,7 +18,7 @@ abstract class AbstractService implements ServiceInterface {
     }
 
 
-    public function add($key, $frame, $target) {
+    public function add($key, $frame, $target = null) {
 
         if (!is_object($frame)) {
             $frame = new BaseFrame($frame);
