@@ -1,37 +1,85 @@
 <?php
+/**
+ * Desyncr\Connected\Service
+ *
+ * PHP version 5.4
+ *
+ * @category General
+ * @package  Desyncr\Connected\Service
+ * @author   Dario Cavuotti <dc@syncr.com.ar>
+ * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
+ * @version  GIT:<>
+ * @link     https://github.com/desyncr
+ */
 namespace Desyncr\Connected\Service;
-use \Desyncr\Connected\Frame\BaseFrame;
 
-abstract class AbstractService implements ServiceInterface {
-    protected $frames = array();
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\Stdlib\AbstractOptions;
 
-    public function setOptions($options) {
-        foreach ($options as $k => $v) {
-            $this->$k = $v;
-        }
+/**
+ * Class AbstractService
+ *
+ * @category General
+ * @package  Desyncr\Connected\Service
+ * @author   Dario Cavuotti <dc@syncr.com.ar>
+ * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
+ * @link     https://github.com/desyncr
+ */
+abstract class AbstractService implements
+    ServiceInterface,
+    ServiceLocatorAwareInterface
+{
+    /**
+     * @var ServiceLocatorInterface
+     */
+    protected $sm;
+    /**
+     * @var AbstractOptions
+     */
+    protected $options;
+
+    /**
+     * setServiceManager
+     *
+     * @param ServiceLocatorInterface $serviceManager Service Manager
+     *
+     * @return mixed
+     */
+    public function setServiceLocator(ServiceLocatorInterface $serviceManager)
+    {
+        $this->sm = $serviceManager;
     }
 
-    public function getOption($option) {
-        if (isset($this->$option)) {
-            return $this->$option;
-        }
+    /**
+     * getServiceManager
+     *
+     * @return ServiceLocatorInterface
+     */
+    public function getServiceLocator()
+    {
+        return $this->sm;
     }
 
+    /**
+     * setOptions
+     *
+     * @param AbstractOptions $options Options array
+     *
+     * @return null
+     */
+    public function setOptions(AbstractOptions $options)
+    {
+        $this->options = $options;
+    }
 
-    public function add($key, $frame) {
-
-        if (!is_object($frame)) {
-            $frame = new BaseFrame($frame);
-        }
-
-        if (!$frame instanceOf \Desyncr\Connected\Frame\FrameInterface) {
-            throw new \Exception('Frame must implement FrameInterface');
-        }
-
-        $frame->setId($key);
-
-        $this->frames[] = $frame;
-
-        return $frame;
+    /**
+     * getOptions
+     *
+     * @return AbstractOptions
+     */
+    public function getOptions()
+    {
+        return $this->options;
     }
 }

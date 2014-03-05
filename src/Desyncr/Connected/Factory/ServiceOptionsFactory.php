@@ -1,11 +1,11 @@
 <?php
 /**
- * Desyncr\Conencted\Factory
+ * Desyncr\Connected\Factory
  *
  * PHP version 5.4
  *
  * @category General
- * @package  Desyncr\Conencted\Factory
+ * @package  Desyncr\Connected\Factory
  * @author   Dario Cavuotti <dc@syncr.com.ar>
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
  * @version  GIT:<>
@@ -13,12 +13,12 @@
  */
 namespace Desyncr\Connected\Factory;
 
-use Desyncr\Connected\Service\ServiceBase;
+use Desyncr\Connected\Options\ServiceOptions;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
- * Class AbstractServiceFactory
+ * Class ServiceOptionsFactory
  *
  * @category General
  * @package  Desyncr\Connected\Factory
@@ -26,7 +26,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
  * @link     https://github.com/desyncr
  */
-abstract class AbstractServiceFactory implements FactoryInterface
+class ServiceOptionsFactory implements FactoryInterface
 {
     /**
      * createService
@@ -37,8 +37,8 @@ abstract class AbstractServiceFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        /** @var \Zend\Stdlib\AbstractOptions $options */
-        $options = $serviceLocator->get('Desyncr\Connected\Options\ServiceOptions');
-        return new ServiceBase($serviceLocator, $options);
+        $configuration = $serviceLocator->get('Config');
+        return new ServiceOptions($configuration['connected']);
     }
 }
+ 

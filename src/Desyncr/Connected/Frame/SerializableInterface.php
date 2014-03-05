@@ -14,14 +14,17 @@
 namespace Desyncr\Connected\Frame;
 
 /**
- * Class BaseFrame
+ * Interface SerializableInterface
  *
- * @category General
- * @package  Desyncr\Connected\Frame
- * @author   Dario Cavuotti <dc@syncr.com.ar>
- * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
- * @link     https://github.com/desyncr
+ * @package Desyncr\Connected\Frame
  */
-class BaseFrame extends AbstractFrame
+interface SerializableInterface
 {
-} 
+    /**
+     * serialize
+     *
+     * @return mixed
+     */
+    public function serialize();
+}
+ 
