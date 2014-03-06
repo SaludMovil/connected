@@ -1,37 +1,81 @@
 <?php
+/**
+ * Desyncr\Connected\Service
+ *
+ * PHP version 5.4
+ *
+ * @category General
+ * @package  Desyncr\Connected\Service
+ * @author   Dario Cavuotti <dc@syncr.com.ar>
+ * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
+ * @version  GIT:<>
+ * @link     https://github.com/desyncr
+ */
 namespace Desyncr\Connected\Service;
-use \Desyncr\Connected\Frame\BaseFrame;
 
-abstract class AbstractService implements ServiceInterface {
+use Desyncr\Connected\Frame\BaseFrame;
+
+/**
+ * Desyncr\Connected\Service
+ *
+ * @category General
+ * @package  Desyncr\Connected\Service
+ * @author   Dario Cavuotti <dc@syncr.com.ar>
+ * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
+ * @link     https://docs.saludmovil.net
+ */
+abstract class AbstractService implements ServiceInterface
+{
+    /**
+     * @var array
+     */
     protected $frames = array();
 
-    public function setOptions($options) {
+    /**
+     * setOptions
+     *
+     * @param Array $options Options
+     *
+     * @return null
+     */
+    public function setOptions($options)
+    {
         foreach ($options as $k => $v) {
             $this->$k = $v;
         }
     }
 
-    public function getOption($option) {
+    /**
+     * getOption
+     *
+     * @param String $option Options
+     *
+     * @return mixed
+     */
+    public function getOption($option)
+    {
         if (isset($this->$option)) {
             return $this->$option;
         }
     }
 
-
-    public function add($key, $frame, $target = null) {
-
+    /**
+     * add
+     *
+     * @param String $key    Key id
+     * @param Object $frame  Frame object
+     * @param null   $target Target
+     *
+     * @return BaseFrame
+     */
+    public function add($key, $frame, $target = null)
+    {
         if (!is_object($frame)) {
             $frame = new BaseFrame($frame);
         }
 
-        if (!$frame instanceOf \Desyncr\Connected\Frame\FrameInterface) {
-            throw new \Exception('Frame must implement FrameInterface');
-        }
-
         $frame->setId($key);
-
         $this->frames[] = $frame;
-
         return $frame;
     }
 }

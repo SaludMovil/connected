@@ -12,7 +12,7 @@
         syntaxCheck="true"
         >
     <testsuite name="Connected tests">
-        <directory>./tests/ConnectedTests</directory>
+        <directory>./tests/</directory>
     </testsuite>
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">

@@ -1,8 +1,24 @@
 <?php
-namespace Desyncr\Connected\Service;
+/**
+ * Desyncr\ConnectedTest\Service
+ *
+ * PHP version 5.4
+ *
+ * @category General
+ * @package  Desyncr\ConnectedTest\Service
+ * @author   Dario Cavuotti <dc@syncr.com.ar>
+ * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
+ * @version  GIT:<>
+ * @link     https://github.com/desyncr
+ */
+namespace Desyncr\ConnectedTest\Service;
 
-class ConcreteService extends AbstractService {
-    public function dispatch() {
+use Desyncr\Connected\Service\AbstractService;
+
+class ConcreteService extends AbstractService
+{
+    public function dispatch()
+    {
         return count($this->frames);
     }
 }
@@ -134,6 +150,8 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase
         $key = 'frame.service.key';
         $frame = new \StdClass;
         $this->setExpectedException('Exception');
+
+        $this->markTestIncomplete('API change will support custom objects');
         $this->object->add($key, $frame);
     }
 
