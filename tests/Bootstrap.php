@@ -11,7 +11,6 @@
  * @version  GIT:<>
  * @link     https://github.com/desyncr
  */
-
 if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
     $loader = include __DIR__ . '/../vendor/autoload.php';
 } elseif (file_exists(__DIR__ . '/../../../autoload.php')) {
@@ -21,4 +20,4 @@ if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
 }
 
 /** @var $loader \Composer\Autoload\ClassLoader */
-$loader->add('Desyncr\\ConnectedTest\\', __DIR__);
+$loader->add('Desyncr\\Connected\\', __DIR__);

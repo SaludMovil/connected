@@ -14,13 +14,13 @@
 namespace Desyncr\Connected\Frame;
 
 /**
- * Class BaseFrame
+ * Desyncr\Connected\Frame
  *
  * @category General
  * @package  Desyncr\Connected\Frame
  * @author   Dario Cavuotti <dc@syncr.com.ar>
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
- * @link     https://github.com/desyncr
+ * @link     https://docs.saludmovil.net
  */
 class BaseFrame extends AbstractFrame
 {

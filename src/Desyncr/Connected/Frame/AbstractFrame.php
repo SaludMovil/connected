@@ -14,17 +14,15 @@
 namespace Desyncr\Connected\Frame;
 
 /**
- * Class AbstractFrame
+ * Desyncr\Connected\Frame
  *
  * @category General
  * @package  Desyncr\Connected\Frame
  * @author   Dario Cavuotti <dc@syncr.com.ar>
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
- * @link     https://github.com/desyncr
+ * @link     https://docs.saludmovil.net
  */
-abstract class AbstractFrame implements
-    FrameInterface,
-    SerializableInterface
+abstract class AbstractFrame implements FrameInterface
 {
     /**
      * @var
@@ -34,7 +32,7 @@ abstract class AbstractFrame implements
     /**
      * Constructor
      *
-     * @param null $arr
+     * @param null $arr Data
      */
     public function __construct($arr = null)
     {
@@ -48,7 +46,7 @@ abstract class AbstractFrame implements
     /**
      * getId
      *
-     * @return String
+     * @return mixed
      */
     public function getId()
     {
@@ -60,7 +58,7 @@ abstract class AbstractFrame implements
      *
      * @param String $id Id
      *
-     * @return mixed
+     * @return null
      */
     public function setId($id)
     {
@@ -70,7 +68,7 @@ abstract class AbstractFrame implements
     /**
      * serialize
      *
-     * @return String
+     * @return string
      */
     public function serialize()
     {
@@ -83,7 +81,7 @@ abstract class AbstractFrame implements
      * @param String $k Key
      * @param mixed  $v Value
      *
-     * @return mixed
+     * @return null
      */
     public function set($k, $v)
     {
@@ -95,7 +93,7 @@ abstract class AbstractFrame implements
      *
      * @param String $k Key
      *
-     * @return mixed
+     * @return null
      */
     public function get($k)
     {

@@ -13,73 +13,69 @@
  */
 namespace Desyncr\Connected\Service;
 
-use Zend\ServiceManager\ServiceLocatorAwareInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\Stdlib\AbstractOptions;
+use Desyncr\Connected\Frame\BaseFrame;
 
 /**
- * Class AbstractService
+ * Desyncr\Connected\Service
  *
  * @category General
  * @package  Desyncr\Connected\Service
  * @author   Dario Cavuotti <dc@syncr.com.ar>
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
- * @link     https://github.com/desyncr
+ * @link     https://docs.saludmovil.net
  */
-abstract class AbstractService implements
-    ServiceInterface,
-    ServiceLocatorAwareInterface
+abstract class AbstractService implements ServiceInterface
 {
     /**
-     * @var ServiceLocatorInterface
+     * @var array
      */
-    protected $sm;
-    /**
-     * @var AbstractOptions
-     */
-    protected $options;
-
-    /**
-     * setServiceManager
-     *
-     * @param ServiceLocatorInterface $serviceManager Service Manager
-     *
-     * @return mixed
-     */
-    public function setServiceLocator(ServiceLocatorInterface $serviceManager)
-    {
-        $this->sm = $serviceManager;
-    }
-
-    /**
-     * getServiceManager
-     *
-     * @return ServiceLocatorInterface
-     */
-    public function getServiceLocator()
-    {
-        return $this->sm;
-    }
+    protected $frames = array();
 
     /**
      * setOptions
      *
-     * @param AbstractOptions $options Options array
+     * @param Array $options Options
      *
      * @return null
      */
-    public function setOptions(AbstractOptions $options)
+    public function setOptions($options)
     {
-        $this->options = $options;
+        foreach ($options as $k => $v) {
+            $this->$k = $v;
+        }
     }
 
     /**
-     * getOptions
+     * getOption
      *
-     * @return AbstractOptions
+     * @param String $option Options
+     *
+     * @return mixed
      */
-    public function getOptions()
+    public function getOption($option)
     {
-        return $this->options;
+        if (isset($this->$option)) {
+            return $this->$option;
+        }
+    }
+
+    /**
+     * add
+     *
+     * @param String $key    Key id
+     * @param Object $frame  Frame object
+     * @param null   $target Target
+     *
+     * @return BaseFrame
+     */
+    public function add($key, $frame, $target = null)
+    {
+        if (!is_object($frame)) {
+            $frame = new BaseFrame($frame);
+        }
+
+        $frame->setId($key);
+        $this->frames[] = $frame;
+        return $frame;
     }
 }

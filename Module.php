@@ -11,4 +11,4 @@
  * @version  GIT:<>
  * @link     https://github.com/desyncr
  */
-require_once __DIR__ . '/src/Desyncr/Connected/Module.php';
+require_once __DIR__ . '/src/Connected/Module.php';

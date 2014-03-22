@@ -21,6 +21,13 @@ namespace Desyncr\Connected\Frame;
 interface FrameInterface
 {
     /**
+     * serialize
+     *
+     * @return mixed
+     */
+    public function serialize();
+
+    /**
      * getId
      *
      * @return mixed
@@ -30,7 +37,7 @@ interface FrameInterface
     /**
      * setId
      *
-     * @param $id
+     * @param String $id Id
      *
      * @return mixed
      */
@@ -39,7 +46,7 @@ interface FrameInterface
     /**
      * get
      *
-     * @param $k
+     * @param String $k Key
      *
      * @return mixed
      */
@@ -48,8 +55,8 @@ interface FrameInterface
     /**
      * set
      *
-     * @param $k
-     * @param $v
+     * @param String $k Key
+     * @param mixed  $v Value
      *
      * @return mixed
      */

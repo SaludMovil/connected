@@ -1,11 +1,11 @@
 <?php
 /**
- * Desyncr\Conencted\Factory
+ * Desyncr\Connected\Factory
  *
  * PHP version 5.4
  *
  * @category General
- * @package  Desyncr\Conencted\Factory
+ * @package  Desyncr\Connected\Factory
  * @author   Dario Cavuotti <dc@syncr.com.ar>
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
  * @version  GIT:<>
@@ -13,32 +13,58 @@
  */
 namespace Desyncr\Connected\Factory;
 
-use Desyncr\Connected\Service\ServiceBase;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
- * Class AbstractServiceFactory
+ * Desyncr\Connected\Factory
  *
  * @category General
  * @package  Desyncr\Connected\Factory
  * @author   Dario Cavuotti <dc@syncr.com.ar>
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
- * @link     https://github.com/desyncr
+ * @link     https://docs.saludmovil.net
  */
-abstract class AbstractServiceFactory implements FactoryInterface
+abstract class AbstractServiceFactory implements
+    FactoryInterface
 {
+    /**
+     * @var array
+     */
+    protected $config = array();
+
     /**
      * createService
      *
      * @param ServiceLocatorInterface $serviceLocator Service Manager
      *
-     * @return mixed
+     * @return Object
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        /** @var \Zend\Stdlib\AbstractOptions $options */
-        $options = $serviceLocator->get('Desyncr\Connected\Options\ServiceOptions');
-        return new ServiceBase($serviceLocator, $options);
+        $configuration = $serviceLocator->get('Config');
+        $this->config = isset($configuration['connected']) ?
+            $configuration['connected'] : array();
+
+        return $this->config;
+    }
+
+    /**
+     * getConfig
+     *
+     * @param mixed $data Data
+     *
+     * @return array
+     */
+    public function getConfig($data = null)
+    {
+        $configuration = $this->config[$this->configuration_key] ?
+            $this->config[$this->configuration_key] : array();
+
+        if ($data && isset($configuration[$data])) {
+            return $configuration[$data];
+        } else {
+            return array();
+        }
     }
 }

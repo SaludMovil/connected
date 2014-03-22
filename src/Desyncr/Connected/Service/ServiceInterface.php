@@ -21,14 +21,24 @@ namespace Desyncr\Connected\Service;
 interface ServiceInterface
 {
     /**
-     * add
+     * setOptions
      *
-     * @param $key
-     * @param $job
+     * @param Array $options Options
      *
      * @return mixed
      */
-    public function add($key, $job);
+    public function setOptions($options);
+
+    /**
+     * add
+     *
+     * @param String $key    Key
+     * @param Object $job    Job object
+     * @param mixed  $target Target
+     *
+     * @return mixed
+     */
+    public function add($key, $job, $target);
 
     /**
      * dispatch

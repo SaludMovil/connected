@@ -12,20 +12,19 @@
  * @link     https://github.com/desyncr
  */
 namespace Desyncr\Connected;
-
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\Mvc\MvcEvent;
 
 /**
- * Class Module
+ * Desyncr\Connected
  *
  * @category General
  * @package  Desyncr\Connected
  * @author   Dario Cavuotti <dc@syncr.com.ar>
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
- * @link     https://github.com/desyncr
+ * @link     https://docs.saludmovil.net
  */
 class Module implements
     AutoloaderProviderInterface,
@@ -35,7 +34,7 @@ class Module implements
     /**
      * getAutoloaderConfig
      *
-     * @return mixed
+     * @return array
      */
     public function getAutoloaderConfig()
     {
@@ -49,7 +48,7 @@ class Module implements
     /**
      * getConfig
      *
-     * @return mixed
+     * @return array|mixed|\Traversable
      */
     public function getConfig()
     {
@@ -59,7 +58,7 @@ class Module implements
     /**
      * getServiceConfig
      *
-     * @return mixed
+     * @return array|mixed|\Zend\ServiceManager\Config
      */
     public function getServiceConfig()
     {
