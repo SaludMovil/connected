@@ -1,6 +1,6 @@
 {
     "name": "desyncr/connected",
-    "version": "0.3.1",
+    "version": "0.4.0",
     "description": "Zend2 Module for realtime and persistent notifications",
     "type": "module",
     "license": "GPL-3.0+",
