@@ -139,20 +139,6 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase
         $frameObject = $this->object->add($key, $frame);
 
         $this->assertEquals('Desyncr\Connected\Frame\BaseFrame', get_class($frameObject));
-        $this->assertEquals($frameObject->getId(), $key);
-    }
-
-    /**
-     * @covers Desyncr\Connected\Service\AbstractService::add
-     */
-    public function testAddInvalidJob()
-    {
-        $key = 'frame.service.key';
-        $frame = new \StdClass;
-        $this->setExpectedException('Exception');
-
-        $this->markTestIncomplete('API change will support custom objects');
-        $this->object->add($key, $frame);
     }
 
     /**
