@@ -32,13 +32,12 @@ interface ServiceInterface
     /**
      * add
      *
-     * @param String $key    Key
-     * @param Object $job    Job object
-     * @param mixed  $target Target
+     * @param String $key Key
+     * @param Object $job Job object
      *
      * @return mixed
      */
-    public function add($key, $job, $target);
+    public function add($key, $job);
 
     /**
      * dispatch

@@ -64,18 +64,26 @@ abstract class AbstractService implements ServiceInterface
      *
      * @param String $key    Key id
      * @param Object $frame  Frame object
-     * @param null   $target Target
      *
      * @return BaseFrame
      */
-    public function add($key, $frame, $target = null)
+    public function add($key, $frame)
     {
         if (!is_object($frame)) {
             $frame = new BaseFrame($frame);
         }
 
-        $frame->setId($key);
         $this->frames[] = $frame;
         return $frame;
+    }
+
+    /**
+     * clear
+     *
+     * @return mixed
+     */
+    public function clear()
+    {
+        $this->frames = array();
     }
 }
